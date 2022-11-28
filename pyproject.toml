@@ -1,3 +1,11 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+git-changelog = ">=0.5.0"
+httpx = ">=0.16.1"
+jinja2-cli = ">=0.7.0"
+toml = ">=0.10.2"
+
 [tool.poetry]
 name = "volttron-lib-sql-historian"
 version = "0.1.0"
@@ -12,10 +20,9 @@ packages = [ { include = "historian", from = "src" } ]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<4.0"
-volttron-lib-base-historian="^0.1.1a4"
+volttron-lib-base-historian = "^0.1.1a4"
 
 [tool.poetry.group.dev.dependencies]
-# formatting, quality, tests
 pytest = "^6.2.5"
 mock = "^4.0.3"
 pre-commit = "^2.17.0"
@@ -25,10 +32,15 @@ isort = "^5.10.1"
 safety = "^1.10.3"
 mypy = "^0.942"
 coverage = "^6.3.2"
+pytest-cov = "^3.0.0"
 Sphinx = "^4.5.0"
 sphinx-rtd-theme = "^1.0.0"
-#volttron-lib-base-historian = {path = "../volttron-lib-base-historian", develop = true}
 
+[tool.yapf]
+based_on_style = "pep8"
+spaces_before_comment = 4
+column_limit = 99
+split_before_logical_operator = true
 
 [tool.yapfignore]
 ignore_patterns = [
@@ -37,19 +49,3 @@ ignore_patterns = [
     "dist/**",
     "docs/**"
 ]
-
-[tool.yapf]
-based_on_style = "pep8"
-spaces_before_comment = 4
-column_limit = 99
-split_before_logical_operator = true
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
-
-# tasks
-git-changelog = ">=0.5.0"
-httpx = ">=0.16.1"
-jinja2-cli = ">=0.7.0"
-toml = ">=0.10.2"
